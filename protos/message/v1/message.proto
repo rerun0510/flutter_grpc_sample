@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package message.v1;
+
+import "google/protobuf/timestamp.proto";
+
+service MessageService {
+  rpc MessageBidirectionalStream(stream MessageBidirectionalStreamRequest) returns (stream MessageBidirectionalStreamResponse);
+}
+
+message MessageBidirectionalStreamRequest {
+  string user_id = 1;
+  string text = 2;
+}
+
+message MessageBidirectionalStreamResponse {
+  repeated Message messages = 1;
+}
+
+message Message {
+  string id = 1;
+  string user_id = 2;
+  string text = 3;
+  google.protobuf.Timestamp timestamp = 4;
+}

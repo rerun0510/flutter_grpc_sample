@@ -1,0 +1,21 @@
+name: flutter_grpc_sample
+
+sdkPath: .fvm/flutter_sdk
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  pb:all: melos pb:format & melos pb:lint & melos pb:gen
+  pb:gen: docker run --rm --volume "$(pwd):/workspace" --workdir /workspace/protos bufbuild/buf generate --include-imports --include-wkt
+  pb:lint: docker run --rm --volume "$(pwd):/workspace" --workdir /workspace/protos bufbuild/buf lint
+  pb:format: docker run --rm --volume "$(pwd):/workspace" --workdir /workspace/protos bufbuild/buf format -w
+  server:
+    run: dart $(pwd)/apps/server/bin/server.dart 
+  gen:dart:
+    run: melos exec -c 1 --depends-on="build_runner" --no-flutter --ignore="riverpod_lint_flutter_test" -- "dart run build_runner build --delete-conflicting-outputs"
+  gen:flutter:
+    run: melos exec -c 1 --depends-on="build_runner" --flutter -- "flutter pub run build_runner build --delete-conflicting-outputs"
+  gen:all:
+    run: melos run gen:dart && melos run gen:flutter

@@ -1,0 +1,7 @@
+name: flutter_grpc_sample
+
+environment:
+  sdk: ">=2.18.0 <=3.0.6"
+
+dev_dependencies:
+  melos: ^3.1.1

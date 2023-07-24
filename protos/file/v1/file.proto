@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package file.v1;
+
+service FileService {
+  rpc FileDownload(FileDownloadRequest) returns (stream FileDownloadResponse);
+  rpc FileUpload(stream FileUploadRequest) returns (FileUploadResponse);
+}
+
+message FileDownloadRequest {}
+
+message FileDownloadResponse {
+  bytes data = 1;
+}
+
+message FileUploadRequest {
+  bytes data = 1;
+}
+
+message FileUploadResponse {
+  int32 size = 1;
+}

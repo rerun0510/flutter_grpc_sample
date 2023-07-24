@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package todo.v1;
+
+service TodoService {
+  rpc CreateTodo(CreateTodoRequest) returns (CreateTodoResponse);
+  rpc GetTodos(GetTodosRequest) returns (GetTodosResponse);
+  rpc UpdateTodo(UpdateTodoRequest) returns (UpdateTodoResponse);
+  rpc DeleteTodo(DeleteTodoRequest) returns (DeleteTodoResponse);
+}
+
+message CreateTodoRequest {
+  string content = 1;
+}
+
+message CreateTodoResponse {}
+
+message GetTodosRequest {}
+
+message GetTodosResponse {
+  repeated Todo todos = 1;
+}
+
+message UpdateTodoRequest {
+  string id = 1;
+  TodoStatus status = 2;
+}
+
+message UpdateTodoResponse {}
+
+message DeleteTodoRequest {
+  string id = 1;
+}
+
+message DeleteTodoResponse {}
+
+message Todo {
+  string id = 1;
+  string content = 2;
+  TodoStatus status = 3;
+}
+
+enum TodoStatus {
+  TODO_STATUS_UNSPECIFIED = 0;
+  TODO_STATUS_INCOMPLETE = 1;
+  TODO_STATUS_COMPLETE = 2;
+}
