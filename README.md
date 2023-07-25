@@ -9,6 +9,7 @@ Please follow the steps below in the root directory.
 1. Resolving dependencies
 
    ```
+   dart pub global activate melos
    melos bs
    ```
 
