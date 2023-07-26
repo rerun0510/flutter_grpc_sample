@@ -1,6 +1,12 @@
 # flutter_grpc_sample 🚀💙
 
-This is a sample for Flutter and gRPC Server for Dart. This project requires Docker to be installed.
+This is a sample for Flutter and gRPC Server for Dart. This project requires Docker and Melos to be installed.
+
+To install Melos, run the following command:
+
+```
+dart pub global activate melos
+```
 
 ## Start up a project
 
