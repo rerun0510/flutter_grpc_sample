@@ -38,23 +38,23 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             ElevatedButton(
-              child: const Text('Client side streaming RPC'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const FileUploadScreen(),
-                  ),
-                );
-              },
-            ),
-            ElevatedButton(
               child: const Text('Server side streaming RPC'),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const FileDownloadScreen(),
+                  ),
+                );
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Client side streaming RPC'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FileUploadScreen(),
                   ),
                 );
               },
